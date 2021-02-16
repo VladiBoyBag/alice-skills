@@ -73,7 +73,7 @@ def handle_dialog(req, res):
         return
 
     # Если нет, то убеждаем его купить слона!
-    res['response']['text'] = 'Все говорят "%s", а ты купи почку с чёрного рынка!' % (
+    res['response']['text'] = 'Все говорят "%s", а ты поищи свою мать на рынке!' % (
         req['request']['original_utterance']
     )
     res['response']['buttons'] = get_suggests(user_id)
