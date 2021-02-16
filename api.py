@@ -57,7 +57,7 @@ def handle_dialog(req, res):
             ]
         }
 
-        res['response']['text'] = 'Привет! Купи слона!'
+        res['response']['text'] = 'Привет! Пошёл нахуй!'
         res['response']['buttons'] = get_suggests(user_id)
         return
 
@@ -69,11 +69,11 @@ def handle_dialog(req, res):
         'хорошо',
     ]:
         # Пользователь согласился, прощаемся.
-        res['response']['text'] = 'Слона можно найти на Яндекс.Маркете!'
+        res['response']['text'] = 'Твою мать можно найти на Яндекс.Маркете!'
         return
 
     # Если нет, то убеждаем его купить слона!
-    res['response']['text'] = 'Все говорят "%s", а ты купи слона!' % (
+    res['response']['text'] = 'Все говорят "%s", а ты купи почку с чёрного рынка!' % (
         req['request']['original_utterance']
     )
     res['response']['buttons'] = get_suggests(user_id)
@@ -97,7 +97,7 @@ def get_suggests(user_id):
     if len(suggests) < 2:
         suggests.append({
             "title": "Ладно",
-            "url": "https://market.yandex.ru/search?text=слон",
+            "url": "https://market.yandex.ru/search?text=мать",
             "hide": True
         })
 
