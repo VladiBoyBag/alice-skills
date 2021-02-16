@@ -119,8 +119,9 @@ logging.basicConfig(level=logging.INFO)
 # которые мы записали в прошлом пункте.
 
 cities = {
-    'москва': ['965417/5d687785586f9e42bc21',
-               '1540737/28d851ec34501d7ac8cf'],
+    'пин': ['1521359/2311db0a64397041365f',
+            '1030494/f9aec9109a50f940cda3',
+            '1652229/9371846179a3e7f38b9b'],
     'нью-йорк': ['1652229/16d407b5a96154b879f6',
                  '965417/074cdc643153b942d8cb'],
     'париж': ["213044/f53ddc5d4d19a1c97c46",
@@ -134,7 +135,7 @@ cities = {
 sessionStorage = {}
 
 
-@app.route('/post', methods=['POST'])
+@app.route('/', methods=['POST'])
 def main():
     logging.info(f'Request: {request.json!r}')
     response = {
@@ -178,7 +179,7 @@ def handle_dialog(res, req):
             res['response'][
                 'text'] = 'Приятно познакомиться, ' \
                           + first_name.title() \
-                          + '. Я - Алиса. Какой город хочешь увидеть?'
+                          + '. Я - Алиса. Каго из сешарикоов ты хочешь увидеть?'
             # получаем варианты buttons из ключей нашего словаря cities
             res['response']['buttons'] = [
                 {
@@ -197,14 +198,14 @@ def handle_dialog(res, req):
         if city in cities:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
-            res['response']['card']['title'] = 'Этот город я знаю.'
+            res['response']['card']['title'] = 'Этого персоонажа я знаю.'
             res['response']['card']['image_id'] = random.choice(cities[city])
             res['response']['text'] = 'Я угадал!'
         # если не нашел, то отвечает пользователю
         # 'Первый раз слышу об этом городе.'
         else:
             res['response']['text'] = \
-                'Первый раз слышу об этом городе. Попробуй еще разок!'
+                'Первый раз слышу об этом персонаже. Попробуй еще разок!'
 
 
 def get_city(req):
